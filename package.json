@@ -1,23 +1,27 @@
 {
-  "name": "sound-maker",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/index.ts",
-    "lint": "eslint --ext \".ts\" --ignore-path .gitignore .",
-    "lint:fix": "eslint --fix --ext \".ts\" --ignore-path .gitignore ."
-  },
-  "keywords": [],
-  "author": "",
-  "dependencies": {
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.2"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "eslint": "^8.10.0"
-  }
+	"name": "sound-maker",
+	"version": "0.1.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "ts-node src/index.ts",
+		"prettier": "prettier --write --ignore-path .gitignore \"**/*.(js|ts)\"",
+		"lint": "eslint --ext \".ts\" --ignore-path .gitignore .",
+		"lint:fix": "eslint --fix --ext \".ts\" --ignore-path .gitignore .",
+		"format": "yarn prettier && yarn lint --fix"
+	},
+	"keywords": [],
+	"author": "",
+	"dependencies": {
+		"ts-node": "^10.7.0",
+		"typescript": "^4.6.2"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.14.0",
+		"@typescript-eslint/parser": "^5.14.0",
+		"eslint": "^8.10.0",
+		"eslint-config-prettier": "^8.5.0",
+		"prettier": "^2.5.1"
+	}
 }
