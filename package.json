@@ -14,10 +14,12 @@
 	"keywords": [],
 	"author": "",
 	"dependencies": {
+		"@descript/web-audio-js": "^0.15.3-patched.5",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.2"
 	},
 	"devDependencies": {
+		"@types/node": "^17.0.21",
 		"@typescript-eslint/eslint-plugin": "^5.14.0",
 		"@typescript-eslint/parser": "^5.14.0",
 		"eslint": "^8.10.0",
