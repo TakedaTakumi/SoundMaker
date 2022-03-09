@@ -15,6 +15,8 @@
 	"author": "",
 	"dependencies": {
 		"@descript/web-audio-js": "^0.15.3-patched.5",
+		"@types/fluent-ffmpeg": "^2.1.20",
+		"fluent-ffmpeg": "^2.1.2",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.2"
 	},

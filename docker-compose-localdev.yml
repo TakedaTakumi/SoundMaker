@@ -1,7 +1,8 @@
-version: "3"
+version: '3'
 services:
   node:
-    image: node:14-buster
+    # image: node:14-buster
+    build: .
     stdin_open: true
     tty: true
     volumes:
