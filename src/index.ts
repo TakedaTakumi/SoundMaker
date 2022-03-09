@@ -1,8 +1,10 @@
-import { convertScaleFiles } from './convertFile';
-// import { makeScaleFile } from './makeSound';
+import { convertScaleFiles, convertToBase64 } from './convertFile';
+import { makeScaleFile } from './makeSound';
 
 // makeDoremi();
 // makeKiraKira();
-// makeScaleFile();
-
-convertScaleFiles();
+makeScaleFile().then(() => {
+	convertScaleFiles().then(() => {
+		convertToBase64();
+	});
+});

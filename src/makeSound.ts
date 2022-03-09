@@ -56,21 +56,21 @@ class HzCode {
 	}
 }
 
-function saveFile(ctx: AudioContext, outFileName: string) {
+async function saveFile(ctx: AudioContext, outFileName: string) {
 	const audioData = ctx.exportAsAudioData();
 
-	ctx.encodeAudioData(audioData, {}).then((arrayBuffer) => {
-		const dir = 'dest';
+	const arrayBuffer = await ctx.encodeAudioData(audioData, {});
 
-		if (fs.existsSync(dir) === false) {
-			fs.mkdirSync(dir);
-		}
+	const dir = 'dest';
 
-		const path = `${dir}/${outFileName}.wav`;
-		fs.writeFileSync(path, Buffer.from(arrayBuffer));
+	if (fs.existsSync(dir) === false) {
+		fs.mkdirSync(dir);
+	}
 
-		console.log(path, '出力しました。');
-	});
+	const path = `${dir}/${outFileName}.wav`;
+	fs.writeFileSync(path, Buffer.from(arrayBuffer));
+
+	console.log(path, '出力しました。');
 }
 
 export function makeDoremi(outFileName = 'doremi') {
@@ -142,24 +142,24 @@ export function makeKiraKira(outFileName = 'kirakira') {
 	saveFile(audioContext, outFileName);
 }
 
-function playToSave(score: HzCode[], outFileName: string) {
+async function playToSave(score: HzCode[], outFileName: string) {
 	const audioContext = new AudioContext();
 	playScore(audioContext, score);
-	saveFile(audioContext, outFileName);
+	await saveFile(audioContext, outFileName);
 }
 
-export function makeScaleFile() {
-	playToSave([HzCode.make(KEY_SCALE.C_MAJOR, 4, 4)], 'C_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.D_FLAT_MAJOR, 4, 4)], 'D_FLAT_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.D_MAJOR, 4, 4)], 'D_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.E_FLAT_MAJOR, 4, 4)], 'E_FLAT_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.E_MAJOR, 4, 4)], 'E_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.F_MAJOR, 4, 4)], 'F_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.G_FLAT_MAJOR, 4, 4)], 'G_FLAT_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.G_MAJOR, 4, 4)], 'G_MAJOR');
-	playToSave([HzCode.make(KEY_SCALE.A_FLAT_MINOR, 4, 4)], 'A_FLAT_MINOR');
-	playToSave([HzCode.make(KEY_SCALE.A_MINOR, 4, 4)], 'A_MINOR');
-	playToSave([HzCode.make(KEY_SCALE.B_FLAT_MINOR, 4, 4)], 'B_FLAT_MINOR');
-	playToSave([HzCode.make(KEY_SCALE.B_MINOR, 4, 4)], 'B_MINOR');
-	playToSave([HzCode.make(KEY_SCALE.C_MINOR, 4, 4)], 'C_MINOR');
+export async function makeScaleFile() {
+	await playToSave([HzCode.make(KEY_SCALE.C_MAJOR, 4, 1)], 'C_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.D_FLAT_MAJOR, 4, 1)], 'D_FLAT_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.D_MAJOR, 4, 1)], 'D_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.E_FLAT_MAJOR, 4, 1)], 'E_FLAT_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.E_MAJOR, 4, 1)], 'E_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.F_MAJOR, 4, 1)], 'F_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.G_FLAT_MAJOR, 4, 1)], 'G_FLAT_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.G_MAJOR, 4, 1)], 'G_MAJOR');
+	await playToSave([HzCode.make(KEY_SCALE.A_FLAT_MINOR, 4, 1)], 'A_FLAT_MINOR');
+	await playToSave([HzCode.make(KEY_SCALE.A_MINOR, 4, 1)], 'A_MINOR');
+	await playToSave([HzCode.make(KEY_SCALE.B_FLAT_MINOR, 4, 1)], 'B_FLAT_MINOR');
+	await playToSave([HzCode.make(KEY_SCALE.B_MINOR, 4, 1)], 'B_MINOR');
+	await playToSave([HzCode.make(KEY_SCALE.C_MINOR, 4, 1)], 'C_MINOR');
 }
